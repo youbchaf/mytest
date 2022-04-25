@@ -1,0 +1,22 @@
+connect / as sysdba;
+Create user CHAFIK identified by 1234 default tablespace users temporary tablespace temp;
+connect CHAFIK/1234;
+
+Connect / as sysdba;
+Create user user_A identified by 1234;
+Create user user_B identified by 1234; 
+Create user user_C identified by 1234;
+
+create role HR_MGR;
+create role HR_CLERK;
+
+Grant create table to HR_MGR;
+Grant create session to HR_MGR;
+Grant select on jobs to HR_MGR;
+
+Grant select,insert,update on jobs to HR_CLERK;
+Grant create session to HR_CLERK;
+
+
+grant HR_MGR to user_A;
+grant HR_CLERK to user_B;
